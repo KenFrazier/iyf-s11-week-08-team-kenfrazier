@@ -1,6 +1,7 @@
 import UserCard from './components/User/UserCard';
 import UserProfile from './components/User/UserProfile';
 import Postlist from './components/Posts/Postlist';
+import CreatePost from './components/Posts/CreatePost';
 import './App.css';
 
 import { Routes, Route } from 'react-router-dom';
@@ -30,7 +31,12 @@ function App() {
       {/* Posts page */}
       <Route
         path="/posts"
-        element={<Postlist/>}
+        element={<PostList/>}
+      />
+      {/* Create Post page */}
+      <Route
+        path="/posts/create"
+        element={<CreatePost/>}
       />
 
     </Routes>
