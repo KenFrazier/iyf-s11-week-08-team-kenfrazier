@@ -1,6 +1,9 @@
 import UserCard from './components/User/UserCard';
 import UserProfile from './components/User/UserProfile';
+import Postlist from './components/Posts/Postlist';
 import './App.css';
+
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const sampleUser = {
@@ -12,11 +15,25 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <h1>CommunityHub</h1>
-      <UserCard user={sampleUser} />
-      <UserProfile user={sampleUser} />
-    </div>
+    <Routes>
+      {/* Home page*/}
+      <Route
+        path="/"
+        element={
+          <div className="App">
+            <h1>Welcome to the Community</h1>
+            <Usercard user={sampleUser} />
+            <UserProfile user={sampleUser} />
+          </div>
+        }
+      />
+      {/* Posts page */}
+      <Route
+        path="/posts"
+        element={<Postlist/>}
+      />
+
+    </Routes>
   );
 }
 
