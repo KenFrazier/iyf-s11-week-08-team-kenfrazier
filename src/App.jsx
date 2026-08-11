@@ -22,7 +22,7 @@ function App() {
         element={
           <div className="App">
             <h1>Welcome to the Community</h1>
-            <Usercard user={sampleUser} />
+            <UserCard user={sampleUser} />
             <UserProfile user={sampleUser} />
           </div>
         }
