@@ -1,20 +1,24 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function CreatePost() {
+function CreatePost({ setPosts }) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    function handleSubmit(event) {
+        event.preventDefault();
 
-        console.log("New Post:", {
-            title,
-            content,
-        });
+        const newPost = {
+            id: Date.now(),
+            title: title,
+            content: content
+        };
+
+        setPosts((currentPosts) => [...currentPosts, newPost]);
 
         setTitle("");
         setContent("");
-    };
+    }
 
     return (
         <div>
@@ -23,25 +27,34 @@ function CreatePost() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="title">Title:</label>
+                    <br />
                     <input
                         type="text"
                         value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(event) => setTitle(event.target.value)}
                         placeholder="Enter post title"
                     />
                 </div>
+                <br />
 
                 <div>
-                    <label htmlFor="content">Content:</label>
+                    <label htmlFor="content">Content</label>
+                    <br />
                     <textarea
                         value={content}
-                        onChange={(e) => setContent(e.target.value)}
+                        onChange={(event) => setContent(event.target.value)}
                         placeholder="Write your post ..."
                     />
                 </div>
 
                 <button type="submit">Create Post</button>
             </form>
+
+            <br />
+
+            <Link to="/posts">
+                <button>Back to Posts</button>
+            </Link>
         </div>
     );
 }
